@@ -53,7 +53,7 @@ define([], function () {
         // Overview
         //------------------------------
         .then(function () {
-            subtitle('<h2>当选出一位领导人后，我们需要将系统的所有更改复制到所有节点。</h2>', false);
+            subtitle('<h2>当选出一位领袖后，我们需要将系统的所有更改复制到所有节点。</h2>', false);
         })
         .then(wait).indefinite()
         .then(function () {
@@ -71,23 +71,23 @@ define([], function () {
         //------------------------------
         .then(function () {
             model().clients.create("X");
-            subtitle('<h2>首先，客户端将更改操作发送给领导者。</h2>', false);
+            subtitle('<h2>首先，客户端将更改操作发送给领袖。</h2>', false);
         })
         .then(wait).indefinite()
         .then(function () {
             client("X").send(model().leader(), "SET 5");
         })
         .after(model().defaultNetworkLatency, function() {
-            subtitle('<h2>更改操作将添加到领导者的日志中...</h2>');
+            subtitle('<h2>更改操作将添加到领袖的日志中...</h2>');
         })
         .at(model(), "appendEntriesRequestsSent", function () {})
         .after(model().defaultNetworkLatency * 0.25, function(event) {
-            subtitle('<h2>...然后将更改操作在下一个心跳发送给追随者。</h2>');
+            subtitle('<h2>...然后将更改操作在下一个心跳发送给群众。</h2>');
         })
         .after(1, clear)
         .at(model(), "commitIndexChange", function (event) {
             if(event.target === model().leader()) {
-                subtitle('<h2>一旦大多数追随者认可，便提交该条目。</h2>');
+                subtitle('<h2>一旦大多数群众认可，便提交该条目。</h2>');
             }
         })
         .after(model().defaultNetworkLatency * 0.25, function(event) {
@@ -151,12 +151,12 @@ define([], function () {
             return (event.target.state() === "leader");
         })
         .after(1, function () {
-            subtitle('<h2>由于我们的分区，我们现在有了两位领导者。</h2>', false);
+            subtitle('<h2>由于我们的分区，我们现在有了两位领袖。</h2>', false);
         })
         .after(1, wait).indefinite()
         .after(1, function () {
             model().clients.create("Y");
-            subtitle('<h2>让我们添加另一个客户端，并尝试更新两个领导者。</h2>', false);
+            subtitle('<h2>让我们添加另一个客户端，并尝试更新两个领袖。</h2>', false);
         })
         .after(1, wait).indefinite()
         .after(1, function () {
@@ -196,7 +196,7 @@ define([], function () {
             subtitle('<h2>节点B将看到较高的选举期限并退出</h2>');
         })
         .after(1, function () {
-            subtitle('<h2>节点A和B都将回滚其未提交的条目并匹配新领导者的日志。</h2>');
+            subtitle('<h2>节点A和B都将回滚其未提交的条目并匹配新领袖的日志。</h2>');
         })
         .after(1, wait).indefinite()
         .after(1, function () {

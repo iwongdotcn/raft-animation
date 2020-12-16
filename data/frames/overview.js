@@ -47,7 +47,7 @@ define(["../model/log_entry"], function (LogEntry) {
         .after(100, function () {
             frame.snapshot();
             node("b")._state = "follower";
-            model().subtitle = '<h2><em>Follower</em> 跟随者状态,</h2>'
+            model().subtitle = '<h2><em>Follower</em> 群众状态,</h2>'
                            + model().controls.html();
             layout.invalidate();
         })
@@ -55,7 +55,7 @@ define(["../model/log_entry"], function (LogEntry) {
         .after(100, function () {
             frame.snapshot();
             node("b")._state = "candidate";
-            model().subtitle = '<h2><em>Candidate</em>候选者状态,</h2>'
+            model().subtitle = '<h2><em>Candidate</em>候选人状态,</h2>'
                            + model().controls.html();
             layout.invalidate();
         })
@@ -63,7 +63,7 @@ define(["../model/log_entry"], function (LogEntry) {
         .after(100, function () {
             frame.snapshot();
             node("b")._state = "leader";
-            model().subtitle = '<h2>或<em>Leader</em> 领导者状态.</h2>'
+            model().subtitle = '<h2>或<em>Leader</em> 领袖状态.</h2>'
                            + model().controls.html();
             layout.invalidate();
         })
@@ -73,14 +73,14 @@ define(["../model/log_entry"], function (LogEntry) {
             frame.snapshot();
             model().zoom(null);
             node("b")._state = "follower";
-            model().subtitle = '<h2>我们所有的节点都以跟随者状态开始.</h2>'
+            model().subtitle = '<h2>我们所有的节点都以群众状态开始.</h2>'
                            + model().controls.html();
             layout.invalidate();
         })
         .after(100, wait).indefinite()
         .after(100, function () {
             frame.snapshot();
-            model().subtitle = '<h2>如果跟随者没有收到领导者的来信，那么他们可以成为候选人.</h2>'
+            model().subtitle = '<h2>如果群众没有收到领袖的来信，那么他们可以成为候选人.</h2>'
                            + model().controls.html();
             layout.invalidate();
         })
@@ -121,14 +121,14 @@ define(["../model/log_entry"], function (LogEntry) {
         .after(100, wait).indefinite()
         .after(100, function () {
             frame.snapshot();
-            model().subtitle = '<h2>如果候选人从多数节点中获得选票，它将成为领导者.</h2>'
+            model().subtitle = '<h2>如果候选人从多数节点中获得选票，它将成为领袖.</h2>'
                            + model().controls.html();
             layout.invalidate();
         })
         .after(100, wait).indefinite()
         .after(100, function () {
             frame.snapshot();
-            model().subtitle = '<h2>这个过程称为领导人选举<em>Leader Election</em>.</h2>'
+            model().subtitle = '<h2>这个过程称为领袖选举<em>Leader Election</em>.</h2>'
                            + model().controls.html();
             layout.invalidate();
         })
@@ -137,7 +137,7 @@ define(["../model/log_entry"], function (LogEntry) {
 
         .after(100, function () {
             frame.snapshot();
-            model().subtitle = '<h2>系统的所有更改现在都要通过领导者.</h2>'
+            model().subtitle = '<h2>系统的所有更改现在都要通过领袖.</h2>'
                            + model().controls.html();
             layout.invalidate();
         })
@@ -177,14 +177,14 @@ define(["../model/log_entry"], function (LogEntry) {
         .after(300, function () {
             frame.snapshot();
             model().send(node("a"), node("b"), {type:"AEREQ"}, function () {
-                node("b")._log.push(new LogEntry(model(), 1, 1, "SET 5"));                
+                node("b")._log.push(new LogEntry(model(), 1, 1, "SET 5"));
                 layout.invalidate();
             });
             model().send(node("a"), node("c"), {type:"AEREQ"}, function () {
                 node("c")._log.push(new LogEntry(model(), 1, 1, "SET 5"));
                 layout.invalidate();
             });
-            model().subtitle = '<h2>要提交条目，节点首先将其复制到跟随者节点...</h2>'
+            model().subtitle = '<h2>要提交条目，节点首先将其复制到群众节点...</h2>'
                            + model().controls.html();
             layout.invalidate();
         })
@@ -197,7 +197,7 @@ define(["../model/log_entry"], function (LogEntry) {
                 layout.invalidate();
             });
             model().send(node("c"), node("a"), {type:"AEREQ"});
-            model().subtitle = '<h2>然后领导者等待，直到大多数节点都写了该条目。</h2>'
+            model().subtitle = '<h2>然后领袖等待，直到大多数节点都写了该条目。</h2>'
                            + model().controls.html();
             layout.invalidate();
         })
@@ -209,7 +209,7 @@ define(["../model/log_entry"], function (LogEntry) {
         .after(100, wait).indefinite()
         .after(100, function () {
             frame.snapshot();
-            model().subtitle = '<h2>现在，该条目已提交到领导者节点上，并且节点状态为“ 5”。</h2>'
+            model().subtitle = '<h2>现在，该条目已提交到领袖节点上，并且节点状态为“ 5”。</h2>'
                            + model().controls.html();
             layout.invalidate();
         })
@@ -226,7 +226,7 @@ define(["../model/log_entry"], function (LogEntry) {
                 node("c")._commitIndex = 1;
                 layout.invalidate();
             });
-            model().subtitle = '<h2>然后领导者通知跟随者该条目已提交。</h2>'
+            model().subtitle = '<h2>然后领袖通知群众该条目已提交。</h2>'
                            + model().controls.html();
             layout.invalidate();
         })
